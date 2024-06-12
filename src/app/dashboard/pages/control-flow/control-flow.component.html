@@ -1,0 +1,40 @@
+<app-title title="Title from Control Flow"/>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-2xl font-bold mb-5">if: {{ showContent() }}</h2>
+
+    <button class="p-2 bg-blue-800" (click)="toggleContent()">Clic me!</button>
+
+    @if (showContent()) {
+    <p>Hello world!</p>
+    } @else {
+    <p>Bye world!</p>
+    }
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+    @switch (grade()) { @case ('A') {
+    <p>Above 90</p>
+    } @case ('B') {
+    <p>Above 80</p>
+    } @default {
+    <p>Above 70</p>
+    } }
+
+    <button (click)="setGrade('A')" class="p-10 btn bg-blue-500 px-4 py-4">
+      A
+    </button>
+    <button (click)="setGrade('B')" class="btn bg-blue-500 px-4 py-4">B</button>
+    <button (click)="setGrade('C')" class="btn bg-blue-500 px-4 py-4">C</button>
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <ul>
+        @for (item of frameworks(); track  $index) {
+            <li>{{item}}</li>
+        }
+    </ul>
+  </div>
+</section>
+
+

@@ -1,0 +1,27 @@
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <app-title title="Add User" />
+    </mat-card-header>
+    <mat-card-content>
+      <div class="example-container">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" formControlName="name" matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Lastname</mat-label>
+        <input type="text" formControlName="lastname" matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput />
+      </mat-form-field>
+    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="button button-green" type="submit">Submit</button>
+      <button class="button button-blue" mat-button>Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

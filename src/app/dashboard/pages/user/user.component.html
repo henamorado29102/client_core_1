@@ -1,0 +1,11 @@
+<app-title [title]="titleLable()" />
+
+@if( user() ){
+    <section>
+        <div>
+            <h3>{{ fullName() }}</h3>
+        </div>
+    </section>
+} @else {
+    <p>Load user </p>
+}

@@ -1,0 +1,31 @@
+<app-title title="Defer view"></app-title>
+<div>
+<a href="https://blog.angular-university.io/angular-defer/"> Refer View, important resource!</a>
+</div>
+<section class="grid grid-cols-1">
+    @defer () {
+        <app-heavy-loaders-slow cssClass="bg-blue-500"></app-heavy-loaders-slow>
+    } @placeholder {
+        <p>
+            Cargando ...
+        </p>
+    }
+
+    @defer () {
+        <app-heavy-loaders-slow cssClass="bg-green-500"></app-heavy-loaders-slow>
+    } @placeholder {
+        <p>
+            Cargando ...
+        </p>
+    }
+
+
+    @defer () {
+        <app-heavy-loaders-slow cssClass="bg-purple-500"></app-heavy-loaders-slow>
+    } @placeholder {
+        <p>
+            Cargando ...
+        </p>
+    }
+    
+</section>
