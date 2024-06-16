@@ -7,7 +7,7 @@
 <mat-sidenav-container autosize>
     <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">
       <mat-nav-list>
-        @for (item of menuitem; track $index) {
+        @for (item of menuitem; track $index) {          
             <a mat-list-item [routerLink]="item.path" >
                 <span class="entry">
                   <mat-icon>{{item.icon}}</mat-icon>

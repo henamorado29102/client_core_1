@@ -37,9 +37,20 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/users/users.component')
             },
             {
+                path: 'update-user/:id',
+                title: 'Add User',
+                loadComponent: () => import('./dashboard/pages/add-user/add-user.component')
+            },
+            {
                 path: 'add-user',
                 title: 'Add User',
                 loadComponent: () => import('./dashboard/pages/add-user/add-user.component')
+            },
+            {
+                path: 'life-cicle',
+                title: 'Life cicle',
+                icon: 'cached',
+                loadComponent: () => import('./dashboard/pages/life-cycle/life-cycle.component')
             }
         ]
     },

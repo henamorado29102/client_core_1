@@ -1,7 +1,7 @@
 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
   <mat-card>
     <mat-card-header>
-      <app-title title="Add User" />
+      <app-title title="{{title}}"/>
     </mat-card-header>
     <mat-card-content>
       <div class="example-container">
@@ -16,12 +16,24 @@
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input type="email" formControlName="email" matInput />
+        @if (addUserForm.get('email')?.invalid && addUserForm.get('email')?.touched){
+          <mat-error >
+            @if (addUserForm.get('email')?.errors?.['required']){
+              <div>
+                Email is required.
+              </div>
+            }            
+            <div *ngIf="addUserForm.get('email')?.errors?.['email']">
+              Invalid email address.
+            </div>         
+          </mat-error>
+        }        
       </mat-form-field>
     </div>
     </mat-card-content>
     <mat-card-actions>
-      <button class="button button-green" type="submit">Submit</button>
-      <button class="button button-blue" mat-button>Cancel</button>
+      <button class="button" type="submit"> @if (updateUSer)  {Update } @else {Create} </button>
+      <button class="button" (click)="onCancel()" mat-button>Cancel</button>
     </mat-card-actions>
   </mat-card>
 </form>

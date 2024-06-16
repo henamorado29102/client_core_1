@@ -35,16 +35,16 @@ export class UsersService {
     return this.http.post<UserResponsePaginate>(environment.apiUrl + '/user/paginate', {pageIndex: pageIndex, pageSize: pageSize})
   }
 
-  getUserById(id: string){
+  getUserById(id: number): Observable<UserResponse>{
     return this.http.get<UserResponse>(`${environment.apiUrl}/user/${id}`)
-    .pipe(
-      delay(1500),
-      map(res => res.data)
-    )   
   }
 
   saveUser(data: User){
     return this.http.post<User>(`${environment.apiUrl}/user`, data);
+  }
+
+  updateUser(data: User): Observable<UserResponse>{
+    return this.http.put<UserResponse>(`${environment.apiUrl}/user`, data);
   }
 
 }
