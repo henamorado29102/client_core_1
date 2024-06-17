@@ -3,11 +3,9 @@ import { Router, CanActivateFn } from '@angular/router';
 
 import { StorageService } from '../services/storage.service';
 
-export const authGuard: CanActivateFn = (route, state) => {  
-  console.log('authGuard')
+export const authGuard: CanActivateFn = (route, state) => {    
   const storageService = inject(StorageService);
-  const router = inject(Router);
-  console.log(storageService.getUser())
+  const router = inject(Router);  
   if (storageService.isLoggedIn()) {   
     return true;
   } else {
@@ -16,11 +14,9 @@ export const authGuard: CanActivateFn = (route, state) => {
   }
 };
 
-export const loginGuard: CanActivateFn = (route, state) => {  
-  console.log('loginGuard')
+export const loginGuard: CanActivateFn = (route, state) => {    
   const storageService = inject(StorageService);
-  const router = inject(Router);
-  console.log(storageService.getUser())
+  const router = inject(Router);  
   if (!storageService.isLoggedIn()) {   
     return true;
   } else {

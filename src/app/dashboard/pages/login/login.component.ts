@@ -53,15 +53,12 @@ export default class LoginComponent {
       this.authService
         .authenticate(loginForm)        
         .subscribe({
-          next: data => {
-            console.log(data)
-            this.storageService.saveUser(data);
-            console.log(this.storageService.getUser().accessToken);
+          next: data => {            
+            this.storageService.saveUser(data);            
             this.reloadPage()
           },
-          error: err => {
-            console.log(err.error.detail)
-            this.error = "error";
+          error: err => {            
+            this.error = "User or password incorrect";
             this.cdr.detectChanges();
           }
         });

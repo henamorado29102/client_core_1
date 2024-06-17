@@ -71,8 +71,7 @@ export default class AddUserComponent {
     lastname: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
   });
-  constructor() {
-    console.log(this.route.snapshot.params);
+  constructor() {    
     if (this.route.snapshot.params['id']) {
       this.updateUSer = true;
       this.userID = this.route.snapshot.params['id'];

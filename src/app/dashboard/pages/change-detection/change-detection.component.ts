@@ -28,9 +28,7 @@ export default class ChangeDetectionComponent {
   constructor(){
    setTimeout(() => {
     this.actualFramework.name = 'React'
-    this.actualFrameworkSignal.update(value => ({...value, name: "React"}))
-
-    console.log("Done")
+    this.actualFrameworkSignal.update(value => ({...value, name: "React"}))    
    }, 3000);
   }
 

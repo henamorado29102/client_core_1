@@ -13,8 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent implements OnInit{
 
   
-  ngOnInit(): void {  
-    console.log("init from app.component")  
+  ngOnInit(): void {      
   }
   title = 'core';
 }
