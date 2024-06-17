@@ -1,4 +1,5 @@
 import { Routes, Route } from '@angular/router';
+import { authGuard, loginGuard } from './guards/auth.guard';
 
 declare module '@angular/router' {
     interface Route {
@@ -10,6 +11,7 @@ export const routes: Routes = [
     {
         path: "dashboard",
         title: 'DashBoard',
+        canActivate: [authGuard],
         loadComponent: () => import('./dashboard/dashboard.component'),
         children: [
             {
@@ -55,8 +57,14 @@ export const routes: Routes = [
         ]
     },
     {
-        path: '',
+        path: 'login',
+        canActivate: [loginGuard],
+        loadComponent: () => import('./dashboard/pages/login/login.component')
+    },
+    {
+        path: '**',
         redirectTo: '/dashboard',
         pathMatch: 'full'
-    }
+    },
+    
 ];

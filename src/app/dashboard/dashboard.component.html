@@ -3,6 +3,8 @@
     <mat-icon>menu</mat-icon>
   </button>
   <h1>{{title}}</h1>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">Logout</button>
 </mat-toolbar>
 <mat-sidenav-container autosize>
     <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">

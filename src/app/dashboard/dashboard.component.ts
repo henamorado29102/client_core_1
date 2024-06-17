@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, ViewChild, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,6 +8,7 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { routes } from '../app.routes';
+import { StorageService } from '../services/storage.service';
 @Component({
   standalone: true,
   imports: [
@@ -19,22 +20,23 @@ import { routes } from '../app.routes';
     MatSidenavModule,
     MatListModule,
   ],
-  templateUrl: "./dashboard.component.html",
+  templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 export default class DashboardComponent {
-
   public menuitem = routes
-  .map(route => route.children ?? [])
-  .flat()
-  .filter(route => route && route.path && route.icon)
-  .filter(route => !route.path?.includes(':'))
+    .map((route) => route.children ?? [])
+    .flat()
+    .filter((route) => route && route.path && route.icon)
+    .filter((route) => !route.path?.includes(':'));
 
   title = 'material-responsive-sidenav';
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile = true;
   isCollapsed = false;
+  private storageService = inject(StorageService);
+  private router = inject(Router);
   constructor(private observer: BreakpointObserver) {}
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -44,6 +46,10 @@ export default class DashboardComponent {
         this.isMobile = false;
       }
     });
+  }
+  logout() {
+    this.storageService.logOut();
+    window.location.reload();
   }
   toggleMenu() {
     if (this.isMobile) {

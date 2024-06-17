@@ -35,3 +35,13 @@ mat-sidenav-content{
         padding-top: 4rem;
     }
 }
+
+.mat-toolbar-row, mat-toolbar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
